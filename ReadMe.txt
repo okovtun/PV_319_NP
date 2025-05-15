@@ -4,6 +4,13 @@ https://www.youtube.com/playlist?list=PLeqyOOqxeiIMzAvRbQJ6Hx_X6bUcvVFBg
 UTP:
 https://tripplite.eaton.com/products/ethernet-cable-types
 
+VMware:
+https://drive.google.com/file/d/1Hhy7_mlidPRJaWSSs79o7taahNFecWOL/view?usp=drive_link
+
+TODO:
+1. Выучить теорию;
+2. Почитать RFC-791:	https://datatracker.ietf.org/doc/html/rfc791
+
 TODO:
 1. Изучить спецификации сетей
 	FastEthernet:
