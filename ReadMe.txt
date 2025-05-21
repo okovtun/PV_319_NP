@@ -7,9 +7,21 @@ https://tripplite.eaton.com/products/ethernet-cable-types
 VMware:
 https://drive.google.com/file/d/1Hhy7_mlidPRJaWSSs79o7taahNFecWOL/view?usp=drive_link
 
+References:
+https://www.iana.org/
+
+TODO:
+1. Сеть класса 'C' 192.168.100.0 при помощи масок разделить на 2, 4, 8, 16, 32 и 64 подсети;
+
 TODO:
 1. Выучить теорию;
 2. Почитать RFC-791:	https://datatracker.ietf.org/doc/html/rfc791
+3. Почитать RFC-826:	https://datatracker.ietf.org/doc/html/rfc826
+4. Почитать RFC-792:	https://datatracker.ietf.org/doc/html/rfc792
+5. Используя анализатор протоколов Wireshark исследовать команду ping.
+	(Какие сообщения отправляет, и какие сообщения получает, 
+	 и что выводит на экран, если команда не получила никаких сообщений);
+6. Используя анализатор протоколов Wireshark исследовать команду tracert;
 
 TODO:
 1. Изучить спецификации сетей
