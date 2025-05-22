@@ -9,8 +9,15 @@ https://drive.google.com/file/d/1Hhy7_mlidPRJaWSSs79o7taahNFecWOL/view?usp=drive
 
 References:
 https://www.iana.org/
+https://ssl-team.com/blog/kak-opredelit-shirokoveschatelnyy-adres-seti-po-ip-i-maske/#Posagovyj_algoritm_rasceta_sirokovesatelnogo_adresa
 
 TODO:
+1. Напомнить про автономные IP-адреса;
+2. Написать IP-калькулятор, который по введенным IP-адресу и маске вычисляет адрес сети, 
+	широковещательный адрес и количество узлов сети.
+	Должна быть возможность вводить маску как в полном виде, так и в сокращенном виде.
+
+DONE:
 1. Сеть класса 'C' 192.168.100.0 при помощи масок разделить на 2, 4, 8, 16, 32 и 64 подсети;
 
 TODO:
