@@ -11,8 +11,15 @@ References:
 https://www.iana.org/
 https://ssl-team.com/blog/kak-opredelit-shirokoveschatelnyy-adres-seti-po-ip-i-maske/#Posagovyj_algoritm_rasceta_sirokovesatelnogo_adresa
 
+Win32:
+SpinControl:	https://learn.microsoft.com/en-us/windows/win32/uxguide/ctrl-spin-controls
+				https://learn.microsoft.com/en-us/windows/win32/controls/udm-setrange?redirectedfrom=MSDN
+
 TODO:
-1. Напомнить про автономные IP-адреса;
+Получить маску при помощи 'WM_NOTIFY' вместо 'EN_CHANGE';
+
+DONE:
+1. Напомнить про автономные IP-адреса;	DONE
 2. Написать IP-калькулятор, который по введенным IP-адресу и маске вычисляет адрес сети, 
 	широковещательный адрес и количество узлов сети.
 	Должна быть возможность вводить маску как в полном виде, так и в сокращенном виде.
