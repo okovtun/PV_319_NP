@@ -16,6 +16,9 @@ SpinControl:	https://learn.microsoft.com/en-us/windows/win32/uxguide/ctrl-spin-c
 				https://learn.microsoft.com/en-us/windows/win32/controls/udm-setrange?redirectedfrom=MSDN
 
 TODO:
+В поле 'Info', IP-адрес и Маска так же должны выводиться в двоичной системе счисления;
+
+DONE:
 Получить маску при помощи 'WM_NOTIFY' вместо 'EN_CHANGE';
 
 DONE:
