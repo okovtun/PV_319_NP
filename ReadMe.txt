@@ -16,6 +16,11 @@ SpinControl:	https://learn.microsoft.com/en-us/windows/win32/uxguide/ctrl-spin-c
 				https://learn.microsoft.com/en-us/windows/win32/controls/udm-setrange?redirectedfrom=MSDN
 
 TODO:
+1. Запустить Сервер на интерфейсе 127.0.0.1;
+2. Определить все интерфейсы на локальной машине и предоставить пользователю выбор,
+   на каком именно интерфейсе он хочет запустить программу;
+
+DONE:
 В поле 'Info', IP-адрес и Маска так же должны выводиться в двоичной системе счисления;
 
 DONE:
