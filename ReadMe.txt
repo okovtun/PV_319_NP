@@ -15,6 +15,15 @@ Win32:
 SpinControl:	https://learn.microsoft.com/en-us/windows/win32/uxguide/ctrl-spin-controls
 				https://learn.microsoft.com/en-us/windows/win32/controls/udm-setrange?redirectedfrom=MSDN
 
+WinSock:
+https://learn.microsoft.com/en-us/windows/win32/winsock/getting-started-with-winsock
+
+Install:
+https://github.com/okovtun/VPD_311_NP/tree/master/Install
+
+TODO:
+1. При помощи анализатора протоколов Wireshark выяснить, почему не отправляется ответ от Сервера;
+
 TODO:
 1. Запустить Сервер на интерфейсе 127.0.0.1;
 2. Определить все интерфейсы на локальной машине и предоставить пользователю выбор,
