@@ -77,7 +77,7 @@ void main()
 	}
 	cout << iResult << " Bytes sent" << endl;
 
-	iResult = shutdown(connect_socket, SD_SEND);
+	//iResult = shutdown(connect_socket, SD_SEND);
 	if (iResult == SOCKET_ERROR)
 	{
 		cout << "Shutdown failed << " << WSAGetLastError() << endl;
@@ -91,9 +91,10 @@ void main()
 	do
 	{
 		iResult = recv(connect_socket, recvbuffer, DEFAULT_BUFFER_LENGTH, 0);
-		if (iResult > 0)cout << "Bytes received: " << iResult << endl;
+		if (iResult > 0)cout << "Bytes received: " << iResult << ", Message: " << recvbuffer << endl;
 		else if (iResult == 0)cout << "Connection closed" << endl;
 		else cout << "Receive failed with code: " << WSAGetLastError() << endl;
+
 	} while (iResult > 0);
 
 	//7) Disconnect:
