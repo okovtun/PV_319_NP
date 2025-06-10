@@ -22,6 +22,11 @@ Install:
 https://github.com/okovtun/VPD_311_NP/tree/master/Install
 
 TODO:
+1. Сделать графический интерфейс для нашего чата ;-)
+2. Протестировать PacketTracer со звуковыми эффектами))
+	https://github.com/okovtun/VPD_311_NP/tree/master/Install
+
+DONE:
 1. Обеспечить одновременную работу Сервера с несколькими клиентами;	DONE
 2. Для каждого клиента должен отбражаться IP-адрес и номер порта;
 3. Почитать про Little-Endian & Big-Endian;
