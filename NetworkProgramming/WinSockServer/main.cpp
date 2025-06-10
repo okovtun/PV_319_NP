@@ -100,7 +100,7 @@ void main()
 		{
 			//HandleClient(ClientSocket);
 			clients[g_connected_clients_count] = ClientSocket;
-			hThreads[g_connected_clients_count] = 
+			hThreads[g_connected_clients_count] =
 				CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)HandleClient, (LPVOID)clients[g_connected_clients_count], 0, &dwThreadIDs[g_connected_clients_count]);
 			g_connected_clients_count++;
 		}
@@ -128,6 +128,7 @@ void main()
 
 VOID WINAPI HandleClient(SOCKET ClientSocket)
 {
+	BOOL init = TRUE;
 	SOCKADDR_IN peer;
 	CHAR address[16] = {};
 	INT address_length = 16;
@@ -145,21 +146,34 @@ VOID WINAPI HandleClient(SOCKET ClientSocket)
 	/////////////////////////
 	INT iResult = 0;
 	//6) Зацикливаем Сокет на получение соединений от клиентов:
+	CHAR nickname[32]{};
 	CHAR recvbuffer[DEFAULT_BUFFER_LENGTH] = {};
+	CHAR sendbuffer[DEFAULT_BUFFER_LENGTH] = {};
 	int recv_buffer_lennth = DEFAULT_BUFFER_LENGTH;
 	do
 	{
 		ZeroMemory(recvbuffer, sizeof(recvbuffer));
+		ZeroMemory(sendbuffer, sizeof(sendbuffer));
 		//iResult = recv(ClientSocket, recvbuffer, recv_buffer_lennth, 0);
 		iResult = recvfrom(ClientSocket, recvbuffer, recv_buffer_lennth, 0, (SOCKADDR*)&peer, &address_length);
+		if (init)
+		{
+			strcpy(nickname, strrchr(recvbuffer, ' '));
+			sprintf(sendbuffer, "%s connected from [%s:%i]", nickname, address, port);
+			init = FALSE;
+		}
+		else
+		{
+			sprintf(sendbuffer, "%s[%s:%i] - %s", nickname, address, port, recvbuffer);
+		}
 		if (iResult > 0)
 		{
 			inet_ntop(AF_INET, &peer.sin_addr, address, INET_ADDRSTRLEN);
 			//cout << "Peer: " << address << endl;
-				/*<< (int)peer.sin_addr.S_un.S_un_b.s_b1 << "." 
-				<< (int)peer.sin_addr.S_un.S_un_b.s_b2 << "." 
-				<< (int)peer.sin_addr.S_un.S_un_b.s_b3 << "." 
-				<< (int)peer.sin_addr.S_un.S_un_b.s_b4 
+				/*<< (int)peer.sin_addr.S_un.S_un_b.s_b1 << "."
+				<< (int)peer.sin_addr.S_un.S_un_b.s_b2 << "."
+				<< (int)peer.sin_addr.S_un.S_un_b.s_b3 << "."
+				<< (int)peer.sin_addr.S_un.S_un_b.s_b4
 				<< endl;*/
 			cout << "Bytes received from " << address << ":" << port << " - " << iResult << " - ";
 			//cout << "Message: " << recvbuffer << endl;
@@ -168,7 +182,7 @@ VOID WINAPI HandleClient(SOCKET ClientSocket)
 			//INT iSendResult = send(ClientSocket, sz_responce, sizeof(sz_responce), 0);
 			for (int i = 0; i < g_connected_clients_count; i++)
 			{
-				INT iSendResult = send(clients[i], recvbuffer, strlen(recvbuffer), 0);
+				INT iSendResult = send(clients[i], sendbuffer, strlen(sendbuffer), 0);
 				if (iSendResult == SOCKET_ERROR)
 				{
 					cout << "Error: Send failed with code: " << WSAGetLastError() << endl;
