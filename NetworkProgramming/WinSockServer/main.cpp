@@ -126,6 +126,21 @@ void main()
 
 VOID WINAPI HandleClient(SOCKET ClientSocket)
 {
+	SOCKADDR_IN peer;
+	CHAR address[16] = {};
+	INT address_length = 16;
+	ZeroMemory(&peer, sizeof(peer));
+	getpeername(ClientSocket, (SOCKADDR*)&peer, &address_length);
+	inet_ntop(AF_INET, &peer.sin_addr, address, 16);
+	int port = ((peer.sin_port & 0xFF) << 8) + (peer.sin_port >> 8);
+	cout << address << ":" << port << endl;
+	//int namelen = 0;
+	//getsockname(ClientSocket, &peer, &namelen);
+	////getpeername(ClientSocket, &peer, &namelen);
+	//cout << "SAdata:\t" << peer.sa_data << endl;;
+	//cout << "Family:\t" << peer.sa_family << endl;
+	//cout << "Length:\t" << namelen << endl;
+	/////////////////////////
 	INT iResult = 0;
 	//6) Зацикливаем Сокет на получение соединений от клиентов:
 	CHAR recvbuffer[DEFAULT_BUFFER_LENGTH] = {};
@@ -133,11 +148,20 @@ VOID WINAPI HandleClient(SOCKET ClientSocket)
 	do
 	{
 		ZeroMemory(recvbuffer, sizeof(recvbuffer));
-		iResult = recv(ClientSocket, recvbuffer, recv_buffer_lennth, 0);
+		//iResult = recv(ClientSocket, recvbuffer, recv_buffer_lennth, 0);
+		iResult = recvfrom(ClientSocket, recvbuffer, recv_buffer_lennth, 0, (SOCKADDR*)&peer, &address_length);
 		if (iResult > 0)
 		{
-			cout << "Bytes received: " << iResult << endl;
-			cout << "Message: " << recvbuffer << endl;
+			inet_ntop(AF_INET, &peer.sin_addr, address, INET_ADDRSTRLEN);
+			//cout << "Peer: " << address << endl
+				/*<< (int)peer.sin_addr.S_un.S_un_b.s_b1 << "." 
+				<< (int)peer.sin_addr.S_un.S_un_b.s_b2 << "." 
+				<< (int)peer.sin_addr.S_un.S_un_b.s_b3 << "." 
+				<< (int)peer.sin_addr.S_un.S_un_b.s_b4 */
+				//<< endl;
+			cout << "Bytes received from " << address << ":" << port << " - " << iResult << " - ";
+			//cout << "Message: " << recvbuffer << endl;
+			cout << recvbuffer << endl;
 			CHAR sz_responce[] = "Hello, I am Server! Nice to meet you!";
 			//INT iSendResult = send(ClientSocket, sz_responce, sizeof(sz_responce), 0);
 			INT iSendResult = send(ClientSocket, recvbuffer, strlen(recvbuffer), 0);
