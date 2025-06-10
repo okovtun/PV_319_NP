@@ -25,6 +25,7 @@ TODO:
 1. Обеспечить одновременную работу Сервера с несколькими клиентами;	DONE
 2. Для каждого клиента должен отбражаться IP-адрес и номер порта;
 3. Почитать про Little-Endian & Big-Endian;
+	https://learn.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-ntohs
 
 DONE:
 1. При помощи анализатора протоколов Wireshark выяснить, почему не отправляется ответ от Сервера;
